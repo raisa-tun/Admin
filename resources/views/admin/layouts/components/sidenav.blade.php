@@ -26,7 +26,31 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="pcoded-hasmenu">
+                               <!--Basic form-->
+                                <div class="pcoded-navigatio-lavel">Forms</div>
+                                    <ul class="pcoded-item pcoded-left-item">
+                                        <li class="pcoded-hasmenu">
+                                            <a href="javascript:void(0)">
+                                                <span class="pcoded-micon"><i class="feather icon-clipboard"></i></span>
+                                                <span class="pcoded-mtext">Form Components</span>
+                                            </a>
+                                            <ul class="pcoded-submenu">
+                                                <li class=" ">
+                                                    <a href="form">
+                                                        <span class="pcoded-mtext">Form Components</span>
+                                                    </a>
+                                                </li>
+                                                <!--List-->
+                                                <li class=" ">
+                                                    <a href="list">
+                                                        <span class="pcoded-mtext">List</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+               
+                               <!-- <li class="pcoded-hasmenu">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="feather icon-sidebar"></i></span>
                                         <span class="pcoded-mtext">Page layouts</span>
@@ -1375,6 +1399,6 @@
                                         <span class="pcoded-mtext">Submit Issue</span>
                                     </a>
                                 </li>
-                            </ul>
+                            </ul>-->
                         </div>
                     </nav>

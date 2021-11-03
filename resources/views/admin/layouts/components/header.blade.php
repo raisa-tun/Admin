@@ -6,7 +6,7 @@
                             <i class="feather icon-menu"></i>
                         </a>
                         <a href="index-1.htm">
-                            <img class="img-fluid" src="{{asset('assets\images\logo.png')}}" alt="Theme-Logo">
+                            <img class="img-fluid" src="{{asset('assets\admin\images\logo.png')}}" alt="Theme-Logo">
                         </a>
                         <a class="mobile-options">
                             <i class="feather icon-more-horizontal"></i>
@@ -44,7 +44,7 @@
                                         </li>
                                         <li>
                                             <div class="media">
-                                                <img class="d-flex align-self-center img-radius" src="{{asset('assets\images\avatar-4.jpg')}}" alt="Generic placeholder image">
+                                                <img class="d-flex align-self-center img-radius" src="{{asset('assets\admin\images\avatar-4.jpg')}}" alt="Generic placeholder image">
                                                 <div class="media-body">
                                                     <h5 class="notification-user">John Doe</h5>
                                                     <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
@@ -54,7 +54,7 @@
                                         </li>
                                         <li>
                                             <div class="media">
-                                                <img class="d-flex align-self-center img-radius" src="{{asset('assets\images\avatar-3.jpg')}}" alt="Generic placeholder image">
+                                                <img class="d-flex align-self-center img-radius" src="{{asset('assets\admin\images\avatar-3.jpg')}}" alt="Generic placeholder image">
                                                 <div class="media-body">
                                                     <h5 class="notification-user">Joseph William</h5>
                                                     <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
@@ -64,7 +64,7 @@
                                         </li>
                                         <li>
                                             <div class="media">
-                                                <img class="d-flex align-self-center img-radius" src="{{asset('assets\images\avatar-4.jpg')}}" alt="Generic placeholder image">
+                                                <img class="d-flex align-self-center img-radius" src="{{asset('assets\admin\images\avatar-4.jpg')}}" alt="Generic placeholder image">
                                                 <div class="media-body">
                                                     <h5 class="notification-user">Sara Soudein</h5>
                                                     <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
@@ -86,7 +86,7 @@
                             <li class="user-profile header-notification">
                                 <div class="dropdown-primary dropdown">
                                     <div class="dropdown-toggle" data-toggle="dropdown">
-                                        <img src="{{asset('assets\images\avatar-4.jpg')}}" class="img-radius" alt="User-Profile-Image">
+                                        <img src="{{asset('assets\admin\images\avatar-4.jpg')}}" class="img-radius" alt="User-Profile-Image">
                                         <span>John Doe</span>
                                         <i class="feather icon-chevron-down"></i>
                                     </div>
