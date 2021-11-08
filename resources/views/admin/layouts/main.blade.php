@@ -86,10 +86,12 @@
                             <div class="page-wrapper">
                                 
                                 @yield('form')
-                                @yield('list')
+                                @yield('page-header')
                                  <div class="page-body">
                                      <div class="row">
                                          @yield('dashboard')
+                                         @yield('card')
+                                         @yield('pagination')
                                      </div> 
                                  </div>  
                             </div>

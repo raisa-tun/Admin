@@ -1,6 +1,68 @@
 @extends('admin.layouts.main')
 
-@section('list')
+@section('page-header')
+
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+
+ .topnav .search-container {
+  float: right;
+   
+}
+
+
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+.topnav input:hover{
+    background:#ccc;
+}
+
+.topnav .add{
+    padding:6px 10px;
+    float:right;
+}
+
+.topnav .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.topnav .search-container button:hover {
+  background: #ccc;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav .search-container {
+    float: none;
+  }
+.topnav input[type=text], .topnav .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+    
+  }
+.topnav input[type=text] {
+    border: 1px solid #ccc;  
+  }
+}
+</style>
+</head>
 
 <!-- Page-header start -->
                         <div class="page-header">
@@ -29,20 +91,50 @@
                                     </div>
                                 </div>
                                 <!-- Page-header end -->
+@endsection
+
+@section('card')
                                 <!-- Basic table card start -->
                                 <div class="card">
                                             <div class="card-header">
                                                 <h5>Site Table</h5>
                                              <!--   <span>use class <code>table</code> inside table element</span>-->
+                                      
 
+                                       <!--Search from list-->
+
+                                      <div class = "topnav">
+                                          <!--Add button-->
+                                          <div class="add">
+                                                        <button type="button" class="btn btn-primary">
+                                                                <a href = "sites/create">Add</a>
+                                                        </button>
+                                                    </div>
+                                          <div class="search-container">
+                                           
+                                                <form action="/sites" >
+                                                
+                                                <input type="text" placeholder="Search.." name="search">
+                                                <button type="submit"><i class="fa fa-search"></i></button>
+                                               
+                                                </form>
+                                              
                                             </div>
+                                          </div>
+
+                                        <!--end search list-->
+
+                                        
+                                           
+                                        
                                             <div class="card-block table-border-style">
                                                 <div class="table-responsive">
                                                     <table class="table">
                                                         <thead>
                                                           
                                                             <tr>
-                                                                <th>#</th>
+                                                                
+                                                                <th>Serial</th>
                                                                 <th>Name</th>
                                                                 <th>Username</th>
                                                                 <th>Database Link</th>
@@ -56,6 +148,7 @@
                                                         <tbody>
                                                          @foreach($site_list as $list)
                                                             <tr>
+                                                    
                                                                 <th scope="row">{{$list->id}}</th>
                                                                 <td>{{$list->name}}</td>
                                                                 <td>{{$list->username}}</td>
@@ -73,7 +166,7 @@
                                                                         </button>
                                                                 </td>
                                                                 <td>
-                                                                        <form action="sites/{{$list->id}}" method="POST">
+                                                                        <form action="/sites/{{$list->id}}" method="POST">
                                                                             @csrf
                                                                             @method('delete')
                                                                             <button type="submit" class="border-b-2 pb-2 border-dotted italic
@@ -89,15 +182,17 @@
                                                     </table>
                                                     
                                                 </div>
-                                                
+                                            
+                  
+                
+                                              {{$site_list->links()}}  
                                             </div>
                                             
-                                        </div>
-                                        <div class="text-center">
-                                                           <button type="button" class="btn btn-primary">
-                                                               <a href = "sites/create">Add</a>
-                                                           </button>
-                                                       </div>
+                                        
+
+                                        
                                         <!-- Basic table card end -->
+                                        <!--Pagiation-->
+                 
 
 @endsection

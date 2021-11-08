@@ -26,6 +26,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('form', [CustomAuthController::class,'form']);
     Route::get('list', [CustomAuthController::class,'list']);
     Route::resource('/sites', SiteController::class);
+    //Route::get('search', );
     
 });
 Route::get('login', [CustomAuthController::class, 'index'])->name('login');
@@ -33,6 +34,7 @@ Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name(
 Route::get('registration', [CustomAuthController::class, 'registration'])->name('register-user');
 Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom'); 
 Route::post('signout', [CustomAuthController::class, 'signOut'])->name('signout');
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

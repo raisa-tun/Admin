@@ -100,7 +100,7 @@
                                                             <label class="col-sm-2 col-form-label">Note</label>
                                                             <div class="col-sm-10">
                                                                 
-                                                                <textarea rows="5" cols="5" class="form-control" placeholder="Note" value="{{$find_site_id->note}}" name= "note"></textarea>
+                                                                <textarea rows="5" cols="5" class="form-control" placeholder="Note" name= "note">{{$find_site_id->note}}</textarea>
                                                             </div>
                                                         
                                                         </div>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Site;
 use Illuminate\Support\Facades\Hash;
 
+
 class SiteController extends Controller
 {
     /**
@@ -13,9 +14,22 @@ class SiteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $site_list = Site::all();
+        $site_list = Site::paginate(3);
+
+        $search= $request->search;
+        if(!empty($search)){
+        $specific_data = Site::query()->where('name','Like',"%{$search}%")
+                                      ->orWhere('username','Like',"%{$search}%")
+                                      ->orWhere('db_link','Like',"%{$search}%")
+                                      ->orWhere('db_name','Like',"%{$search}%")
+                                      ->orWhere('db_user_name','Like',"%{$search}%")
+                                      ->get();
+                         //dd($specific_data); 
+            return view('sites.list',['site_list'=>$specific_data]);
+        }
+
         return view('sites.list', ['site_list' => $site_list]);
     }
 
@@ -41,7 +55,7 @@ class SiteController extends Controller
         $request->validate([
         
             'name' => 'required|alpha|max:255',
-            'username' => 'required',
+            'username' => 'required|min:3',
             'password' => 'required|min:4',
             'note'    => 'required',
             'status'  => 'required'
@@ -50,11 +64,11 @@ class SiteController extends Controller
         $site = Site::create([
             'name' => $request->name,
             'username' =>$request->username,
-            'password' =>Hash::make($request->password),
+            'password' =>$request->password,
             'db_link' => $request->db_link,
             'db_name' => $request->db_name,
             'db_user_name' =>$request->db_user_name,
-            'db_password' => Hash::make($request->db_password),
+            'db_password' => $request->db_password,
             'note'  => $request->note,
             'status' => $request->status,
 
