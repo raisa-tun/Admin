@@ -49,7 +49,27 @@
                                             </ul>
                                         </li>
                                     </ul>
-               
+
+                               <!--Sites-->
+                               <div class="pcoded-navigatio-lavel">Sites</div>
+                                    <ul class="pcoded-item pcoded-left-item">
+                                        <li class="pcoded-hasmenu">
+                                            <a href="javascript:void(0)">
+                                                <span class="pcoded-micon"><i class="feather icon-clipboard"></i></span>
+                                                <span class="pcoded-mtext">Sites</span>
+                                            </a>
+                                            <ul class="pcoded-submenu">
+                                             
+                                                <!--List-->
+                                                <li class=" ">
+                                                    <a href="/sites">
+                                                        <span class="pcoded-mtext">List</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                              <!--Sites end-->
                                <!-- <li class="pcoded-hasmenu">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="feather icon-sidebar"></i></span>

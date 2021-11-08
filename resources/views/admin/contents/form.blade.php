@@ -147,7 +147,7 @@
                                                                 <textarea rows="5" cols="5" class="form-control" placeholder="Default textarea"></textarea>
                                                             </div>
                                                         </div>
-                                                        <div class="text-center">
+                                                      <div class="text-center">
                                                         <button type="button" class="btn btn-primary">Submit</button>
                                                        </div>
                                                     </form>
