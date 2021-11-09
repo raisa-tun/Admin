@@ -146,10 +146,14 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                        <?php 
+                                                            $count = $site_list->perPage()*($site_list->currentPage()-1);
+                                                           // dd($count);
+                                                        ?>
                                                          @foreach($site_list as $list)
                                                             <tr>
                                                     
-                                                                <th scope="row">{{$list->id}}</th>
+                                                                <th scope="row"><?php $count++?>{{$count}}</th>
                                                                 <td>{{$list->name}}</td>
                                                                 <td>{{$list->username}}</td>
                                                                 <td>{{$list->db_link}}</td>
