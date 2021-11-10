@@ -114,7 +114,7 @@
                                            
                                                 <form action="/sites" >
                                                 
-                                                <input type="text" placeholder="Search.." name="search">
+                                                <input type="text" placeholder="Search.." value="{{request()->input('search')}}" name="search">
                                                 <button type="submit"><i class="fa fa-search"></i></button>
                                                
                                                 </form>
@@ -147,8 +147,8 @@
                                                         </thead>
                                                         <tbody>
                                                         <?php 
-                                                            $count = $site_list->perPage()*($site_list->currentPage()-1);
-                                                           // dd($count);
+                                                           // $count = $site_list->perPage()*($site_list->currentPage()-1);
+                                                           
                                                         ?>
                                                          @foreach($site_list as $list)
                                                             <tr>

@@ -16,21 +16,30 @@ class SiteController extends Controller
      */
     public function index(Request $request)
     {
-        $site_list = Site::paginate(3);
-
+        
+        $specific_data = Site::orderBy('id', 'asc');
+       // $site_list = Site::paginate(3);
         $search= $request->search;
         if(!empty($search)){
-        $specific_data = Site::query()->where('name','Like',"%{$search}%")
+            $specific_data = Site::query()->where('name','Like',"%{$search}%")
                                       ->orWhere('username','Like',"%{$search}%")
                                       ->orWhere('db_link','Like',"%{$search}%")
                                       ->orWhere('db_name','Like',"%{$search}%")
-                                      ->orWhere('db_user_name','Like',"%{$search}%")
-                                      ->get();
-                         //dd($specific_data); 
-            return view('sites.list',['site_list'=>$specific_data]);
+                                      ->orWhere('db_user_name','Like',"%{$search}%");
+       
+                       
+        $data = $specific_data->paginate(1);
+                        // dd($data); 
+             $count = $data->perPage()*($data->currentPage()-1);
+         
+        //    //dd($count);
+             return view('sites.list',['count'=>$count], ['site_list'=>$data]);
+            
+            //return view('sites.list',['site_list'=>$specific_data]);
         }
-
-        return view('sites.list', ['site_list' => $site_list]);
+        $site_list = $specific_data->paginate(3);
+        $count = $site_list->perPage()*($site_list->currentPage()-1);
+        return view('sites.list',compact('count','site_list'));
     }
 
     /**
