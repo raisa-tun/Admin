@@ -25,15 +25,18 @@ class SiteController extends Controller
                                       ->orWhere('username','Like',"%{$search}%")
                                       ->orWhere('db_link','Like',"%{$search}%")
                                       ->orWhere('db_name','Like',"%{$search}%")
-                                      ->orWhere('db_user_name','Like',"%{$search}%");
+                                      ->orWhere('db_user_name','Like',"%{$search}%")
+                                      ->paginate(2);
        
                        
-        $data = $specific_data->paginate(1);
+            // $specific_data->appends($request->all());
+            $specific_data->appends(['search'=>$search]);
+
                         // dd($data); 
-             $count = $data->perPage()*($data->currentPage()-1);
+             $count = $specific_data->perPage()*($specific_data->currentPage()-1);
          
         //    //dd($count);
-             return view('sites.list',['count'=>$count], ['site_list'=>$data]);
+             return view('sites.list',['count'=>$count], ['site_list'=>$specific_data]);
             
             //return view('sites.list',['site_list'=>$specific_data]);
         }
