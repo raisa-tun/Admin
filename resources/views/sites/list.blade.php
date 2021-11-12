@@ -29,6 +29,11 @@
     float:right;
 }
 
+.topnav .select{
+    
+    padding:8px 10px;
+    float:right;
+}
 .topnav .search-container button {
   float: right;
   padding: 6px 10px;
@@ -95,7 +100,7 @@
 
 @section('card')
                                 <!-- Basic table card start -->
-                                <div class="card">
+                            <div class="card">
                                             <div class="card-header">
                                                 <h5>Site Table</h5>
                                              <!--   <span>use class <code>table</code> inside table element</span>-->
@@ -109,18 +114,52 @@
                                                         <button type="button" class="btn btn-primary">
                                                                 <a href = "sites/create">Add</a>
                                                         </button>
-                                                    </div>
+                                          </div>
+                                          
                                           <div class="search-container">
                                            
-                                                <form action="/sites" >
-                                                
-                                                <input type="text" placeholder="Search.." value="{{request()->input('search')}}" name="search">
-                                                <button type="submit"><i class="fa fa-search"></i></button>
+                                                <form action="/sites"  method = "Get">
+                                                        <div class="select">
+                                                       
+                                                                <select class="form-control" name="status"  >
+                                                                     
+                                                                        <option >Status</option>
+                                                                        
+                                                                         
+                                                                       
+                                                                   <option value = "0" 
+                                                                        @foreach($site_list as $status)
+                                                                      
+                                                                         @if($status->status == '0')
+                                                                           Selected
+                                                                         @endif
+                                                                        @endforeach
+                                                                            >
+                                                                        Deactive
+                                                                    </option>
+
+                                                                     
+                                                                     <option value = "1" 
+                                                                        @foreach($site_list as $status)
+                                                                      
+                                                                          @if($status->status == '1')
+                                                                              Selected
+                                                                          @endif
+                                                                          @endforeach >
+                                                                        
+                                                                          Active
+                                                                     </option>
+                                                                    
+                                                                </select> 
+                                                                
+                                                        </div> 
+                                                        <input type="text" placeholder="Search.." value="{{request()->input('search')}}" name="search">
+                                                        <button type="submit"><i class="fa fa-search"></i></button>
                                                
                                                 </form>
                                               
-                                            </div>
                                           </div>
+                                      </div>
 
                                         <!--end search list-->
 
@@ -142,6 +181,7 @@
                                                                 <th>Database Username</th>
                                                                 <th>note</th>
                                                                 <th>Status</th>
+                                                                <th>Action</th>
                                                                 
                                                             </tr>
                                                         </thead>
@@ -160,25 +200,26 @@
                                                                 <td>{{$list->db_name}}</td>
                                                                 <td>{{$list->db_user_name}}</td>
                                                                 <td>{{$list->note}}</td>
+                                                               
+                                                            
                                                                 <td>{{$list->status}}</td>
                                                                 <td>
-                                                                        <button type="submit" 
-                                                                                class="border-b-2 pb-2 border-dotted italic
-                                                                                text-red-500">
-                                                                                <a href="sites/{{$list->id}}/edit" class="italic" >
-                                                                                    Edit &rarr;</a>
-                                                                        </button>
-                                                                </td>
-                                                                <td>
+                                                                <div class="btn-group" role="group">
+                                                                     <div class="col-md-6 custom">
+                                                                                <a href="sites/{{$list->id}}/edit" class="btn btn-xs" >
+                                                                                <span class="fas fa-edit"> </span> </a>
+                                                                     </div>
+                                                                     <div class="col-md-6 custom">
                                                                         <form action="/sites/{{$list->id}}" method="POST">
                                                                             @csrf
                                                                             @method('delete')
-                                                                            <button type="submit" class="border-b-2 pb-2 border-dotted italic
-                                                                                    text-red-500">
-                                                                                Delete &rarr;
-                                                                            
+                                                                            <button type="submit" class="btn btn-xs">
+                                                                                    <span class="fas fa-trash"></span>
+                                                                          
                                                                             </button>
                                                                         </form>
+                                                                        </div> 
+                                                                        </div> 
                                                                     </td>
                                                             </tr>
                                                          @endforeach
@@ -193,7 +234,7 @@
                                             </div>
                                             
                                         
-
+                          </div>
                                         
                                         <!-- Basic table card end -->
                                         <!--Pagiation-->
