@@ -21,40 +21,68 @@ class SiteController extends Controller
        // $site_list = Site::paginate(3);
         $search= $request->search;
         $status = $request->status;
-        if($request->filled('search')){
-            $specific_data = Site::query()->where('name','Like',"%{$search}%")
-                                      ->orWhere('username','Like',"%{$search}%")
-                                      ->orWhere('db_link','Like',"%{$search}%")
-                                      ->orWhere('db_name','Like',"%{$search}%")
-                                      ->orWhere('db_user_name','Like',"%{$search}%")
-                                      ->paginate(2);        
-            // $specific_data->appends($request->all());
-            $specific_data->appends(['search'=>$search]);
-            $count = $specific_data->perPage()*($specific_data->currentPage()-1);
-            //dd($count);
-            return view('sites.list',['count'=>$count], ['site_list'=>$specific_data]);
-         
-        }
-        else if($request->filled('status')){
+        if(!empty($request->all())){
 
-            $status = Site::query()->where('status', $status)->paginate(2);
-          // dd($status);
-            //$status -> appends(['status'=>$status]);
-            $status->appends($request->all());
-            //dd($status);
-            $count = $status->perPage()*($status->currentPage()-1);
+                if(!($request->filled('search') && $request->filled('status'))){
+                    if($request->filled('search')){
+
+                     $specific_data = Site::query()->where('name','Like',"%{$search}%")
+                                            ->orWhere('username','Like',"%{$search}%")
+                                            ->orWhere('db_link','Like',"%{$search}%")
+                                            ->orWhere('db_name','Like',"%{$search}%")
+                                            ->orWhere('db_user_name','Like',"%{$search}%");
+                                                   
+                    // $specific_data->appends($request->all());
+                    if($specific_data->doesntExist()){
+                        return view('sites.blank');
+                      }
+                   $paginator = $specific_data->paginate(2);
+                   $paginator->appends(['search'=>$search]);
+                    $count = $paginator->perPage()*($paginator->currentPage()-1);
+                    //dd($count);
+                    return view('sites.list',['count'=>$count], ['site_list'=>$paginator]);
+                
+                    }
+                    else if($request->filled('status')){
+                    //  dd($request->all());
+                        $status = Site::query()->where('status', $status)->paginate(2);
+                    // dd($status);
+                        // $status -> appends(['active'=>$request->input('1'), 'deactive'=>$request->input('0') ]);
+                        $status->appends($request->all());
+                        //dd($status);
+                        $count = $status->perPage()*($status->currentPage()-1);
+                        
+                        return view('sites.list', ['count'=>$count],['site_list'=>$status]);
+                    }
+
+                
+                }
+                else{
+                    $both_search = Site::query()->where('name','Like',"%{$search}")
+                                                ->where('status','Like',"%{$status}")
+                                                ->orWhere('username','Like',"%{$search}%")
+                                                ->where('status','Like',"%{$status}")
+                                                ->orWhere('db_link','Like',"%{$search}%")
+                                                ->where('status','Like',"%{$status}")
+                                                ->orWhere('db_name','Like',"%{$search}%")
+                                                ->where('status','Like',"%{$status}")
+                                                ->orWhere('db_user_name','Like',"%{$search}%")
+                                                ->where('status','Like',"%{$status}");
+                           
+                       if($both_search->doesntExist()){
+                        return view('sites.blank');
+                      }
+                       $paginator =$both_search->paginate(2);
+                       $paginator->appends($request->all());
+                        
+                        $count = $paginator->perPage()*($paginator->currentPage()-1);
+                        return view('sites.list', ['count'=>$count],['site_list'=>$paginator]);
+                    
+                }
             
-            return view('sites.list', ['count'=>$count],['site_list'=>$status]);
-        }
-        elseif($request->filled('search','status')){
-             
-            $both_search = Site::query()->where('name', 'Like', "%{$search}%")
-                                          ->where('status','Like',"%{$status}%")
-                                          ->paginate(2);
-           $both_search->appends($request->all());
-           $count = $both_search->perPage()*($both_search->currentPage()-1);
-           return view('sites.list',['count'=>$count], ['site_list'=>$both_search]);
-        }
+
+       }
+
         
         $site_list = $specific_data->paginate(3);
         /*foreach($site_list as $list){

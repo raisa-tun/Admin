@@ -106,6 +106,7 @@
                                                             <label class="col-sm-2 col-form-label">Status</label>
                                                             <div class="col-sm-10">
                                                                 <select class="form-control" placeholder="Status" name="status" >
+                                                                    <option>Status</option>
                                                                     <option>1</option>
                                                                     <option>0</option>
                                                                 </select>

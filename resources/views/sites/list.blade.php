@@ -121,39 +121,40 @@
                                                 <form action="/sites"  method = "Get">
                                                         <div class="select">
                                                        
-                                                                <select class="form-control" name="status"  >
+                                                                <select class="form-control" name="status"   >
                                                                      
-                                                                        <option >Status</option>
                                                                         
-                                                                         
-                                                                       
-                                                                   <option value = "0" 
-                                                                        @foreach($site_list as $status)
-                                                                      
-                                                                         @if($status->status == '0')
-                                                                           Selected
-                                                                         @endif
-                                                                        @endforeach
-                                                                            >
-                                                                        Deactive
-                                                                    </option>
-
-                                                                     
-                                                                     <option value = "1" 
-                                                                        @foreach($site_list as $status)
-                                                                      
-                                                                          @if($status->status == '1')
-                                                                              Selected
-                                                                          @endif
-                                                                          @endforeach >
                                                                         
-                                                                          Active
-                                                                     </option>
+                                                             <?php 
+                                                                 foreach($site_list as $status){
+                                                                     //  dd($status);
+                                                                       if($status->status=='0' || $status->status=='1' ){
+                                                                           $data = $status->status;
+                                                                           
+                                                                       }
+                                                                       else{
+                                                                           $data = "";
+                                                                       }
                                                                     
+                                                                   }   
+                                                                        
+                                                                       ?>
+                                                                    
+                                                                  {{-- <option value = '0' <?php if(!$data == '0') {return redirect('sites.blank');} else { 'selected'; }?> >Deactive</option> 
+                                                                    <option value = '1' <?php if(!$data == '1') {return redirect('sites.blank');} else { 'selected'; }?> >Active</option>
+                                                                    <option value = '' selected>Status</option>--}}
+
+                                                                      <option value = '0' {{($data == '0') ? 'selected' :''}}>Deactive</option>
+                                                                       <option value = '1' {{($data == '1') ? 'selected' :''}}>Active</option>
+                                                                       <option value = '' {{''=='' ? 'selected':''}}>Status</option>
+
+                                                                       {{--<option value = '0'selected>Deactive</option>
+                                                                       <option value = '1' selected>Active</option>--}}
+                                                              
                                                                 </select> 
                                                                 
                                                         </div> 
-                                                        <input type="text" placeholder="Search.." value="{{request()->input('search')}}" name="search">
+                                                        <input type="text" placeholder="Search.." value="{{request()->input('search')}}" name="search" >
                                                         <button type="submit"><i class="fa fa-search"></i></button>
                                                
                                                 </form>

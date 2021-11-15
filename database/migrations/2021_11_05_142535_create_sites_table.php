@@ -23,7 +23,7 @@ class CreateSitesTable extends Migration
             $table->string('db_user_name');
             $table->string('db_password');
             $table->string('note');
-            $table->string('status')->default(0);
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
     }
