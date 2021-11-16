@@ -17,48 +17,18 @@ class SiteController extends Controller
     public function index(Request $request)
     {
        //dd($request);
-        $specific_data = Site::orderBy('id', 'asc');
-       // $site_list = Site::paginate(3);
+       $query = Site::query();
+       $specific_data = $query->orderBy('id', 'asc');
+       
         $search= $request->search;
+        //dd($search);
         $status = $request->status;
+       // dd($status);
         if(!empty($request->all())){
 
-                if(!($request->filled('search') && $request->filled('status'))){
-                    if($request->filled('search')){
-
-                     $specific_data = Site::query()->where('name','Like',"%{$search}%")
-                                            ->orWhere('username','Like',"%{$search}%")
-                                            ->orWhere('db_link','Like',"%{$search}%")
-                                            ->orWhere('db_name','Like',"%{$search}%")
-                                            ->orWhere('db_user_name','Like',"%{$search}%");
-                                                   
-                    // $specific_data->appends($request->all());
-                    if($specific_data->doesntExist()){
-                        return view('sites.blank');
-                      }
-                   $paginator = $specific_data->paginate(2);
-                   $paginator->appends(['search'=>$search]);
-                    $count = $paginator->perPage()*($paginator->currentPage()-1);
-                    //dd($count);
-                    return view('sites.list',['count'=>$count], ['site_list'=>$paginator]);
-                
-                    }
-                    else if($request->filled('status')){
-                    //  dd($request->all());
-                        $status = Site::query()->where('status', $status)->paginate(2);
-                    // dd($status);
-                        // $status -> appends(['active'=>$request->input('1'), 'deactive'=>$request->input('0') ]);
-                        $status->appends($request->all());
-                        //dd($status);
-                        $count = $status->perPage()*($status->currentPage()-1);
-                        
-                        return view('sites.list', ['count'=>$count],['site_list'=>$status]);
-                    }
-
-                
-                }
-                else{
-                    $both_search = Site::query()->where('name','Like',"%{$search}")
+            if($request->filled('search') && $request->filled('status')){
+                //dd($request);
+                $specific_data = $query->where('name','Like',"%{$search}")
                                                 ->where('status','Like',"%{$status}")
                                                 ->orWhere('username','Like',"%{$search}%")
                                                 ->where('status','Like',"%{$status}")
@@ -68,29 +38,40 @@ class SiteController extends Controller
                                                 ->where('status','Like',"%{$status}")
                                                 ->orWhere('db_user_name','Like',"%{$search}%")
                                                 ->where('status','Like',"%{$status}");
-                           
-                       if($both_search->doesntExist()){
-                        return view('sites.blank');
-                      }
-                       $paginator =$both_search->paginate(2);
-                       $paginator->appends($request->all());
+            }
+            else{
+                    if($request->filled('search')){
+                    // dd($request);
+                     $specific_data = $query->where('name','Like',"%{$search}%")
+                                            ->orWhere('username','Like',"%{$search}%")
+                                            ->orWhere('db_link','Like',"%{$search}%")
+                                            ->orWhere('db_name','Like',"%{$search}%")
+                                            ->orWhere('db_user_name','Like',"%{$search}%");
+                                           
+                                  
+                
+                    }
+                    else if($request->filled('status')){
+                      //dd($request);
+                        $specific_data = $query->where('status', $status);
                         
-                        $count = $paginator->perPage()*($paginator->currentPage()-1);
-                        return view('sites.list', ['count'=>$count],['site_list'=>$paginator]);
+                    }
+
                     
-                }
+             }
+                
             
+            }
 
-       }
-
+       if($specific_data->doesntExist()){
+        return view('sites.blank');
+      }
+      $paginator =$specific_data->paginate(2);
+       $paginator->appends($request->all());
         
-        $site_list = $specific_data->paginate(3);
-        /*foreach($site_list as $list){
-            echo ($list->status);
-        }*/
-       
-        $count = $site_list->perPage()*($site_list->currentPage()-1);
-        return view('sites.list',compact('count','site_list'));
+        $count = $paginator->perPage()*($paginator->currentPage()-1);
+        return view('sites.list', ['count'=>$count],['site_list'=>$paginator]);
+        
     }
 
     /**
@@ -111,16 +92,16 @@ class SiteController extends Controller
      */
     public function store(Request $request)
     {
-
+       // dd($request->all());
         $request->validate([
         
             'name' => 'required|alpha|max:255',
             'username' => 'required|min:3',
             'password' => 'required|min:4',
             'note'    => 'required',
-            'status'  => 'required'
+            'status'  => 'required',
         ]);
-
+//dd($request->validate);
         $site = Site::create([
             'name' => $request->name,
             'username' =>$request->username,
@@ -133,6 +114,7 @@ class SiteController extends Controller
             'status' => $request->status,
 
         ]);
+        //dd($site);
         return redirect('/sites');
     }
 

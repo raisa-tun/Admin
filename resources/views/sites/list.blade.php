@@ -121,36 +121,42 @@
                                                 <form action="/sites"  method = "Get">
                                                         <div class="select">
                                                        
+                                                        <?php 
+                                                                      
+                                                                      $get_data = request()->has('status') ? request()->get('status') :'';
+                                                                     // dd($get_data);
+                                                                     //dd(request()->get('status'));
+                                                                     ?>
                                                                 <select class="form-control" name="status"   >
                                                                      
                                                                         
                                                                         
                                                              <?php 
-                                                                 foreach($site_list as $status){
+                                                               /* foreach($site_list as $status){
                                                                      //  dd($status);
                                                                        if($status->status=='0' || $status->status=='1' ){
                                                                            $data = $status->status;
                                                                            
                                                                        }
-                                                                       else{
-                                                                           $data = "";
-                                                                       }
+                                                                      
                                                                     
-                                                                   }   
+                                                                   }  */
+                                                                    
                                                                         
                                                                        ?>
+
+                                                               
+                                                                       <option value = '' >Status</option>
+                                                                       <option value = '0' {{ $get_data == 0 ? "selected" :''}}>Deactive</option>
+                                                                       <option value = '1' {{ $get_data == 1 ? "selected" :''}}>Active</option>                                                                    
+
+
+                                                                      {{-- <option value = '' >Status</option>
+                                                                       <option value = '0' {{$data == '0' ? "selected" :''}}>Deactive</option>
+                                                                       <option value = '1' {{$data == '1' ? "selected" :''}}>Active</option>--}}
+                                                                       
+
                                                                     
-                                                                  {{-- <option value = '0' <?php if(!$data == '0') {return redirect('sites.blank');} else { 'selected'; }?> >Deactive</option> 
-                                                                    <option value = '1' <?php if(!$data == '1') {return redirect('sites.blank');} else { 'selected'; }?> >Active</option>
-                                                                    <option value = '' selected>Status</option>--}}
-
-                                                                      <option value = '0' {{($data == '0') ? 'selected' :''}}>Deactive</option>
-                                                                       <option value = '1' {{($data == '1') ? 'selected' :''}}>Active</option>
-                                                                       <option value = '' {{''=='' ? 'selected':''}}>Status</option>
-
-                                                                       {{--<option value = '0'selected>Deactive</option>
-                                                                       <option value = '1' selected>Active</option>--}}
-                                                              
                                                                 </select> 
                                                                 
                                                         </div> 
@@ -189,8 +195,10 @@
                                                         <tbody>
                                                         <?php 
                                                            // $count = $site_list->perPage()*($site_list->currentPage()-1);
-                                                           
+                                                           //dd($get_data==0);
                                                         ?>
+                                                          
+
                                                          @foreach($site_list as $list)
                                                             <tr>
                                                     
@@ -234,11 +242,12 @@
                                               {{$site_list->links()}}  
                                             </div>
                                             
-                                        
-                          </div>
+                                            
+        </div>
                                         
                                         <!-- Basic table card end -->
                                         <!--Pagiation-->
                  
-
+                                      {{--  <?php $current_url = url()->full();
+                                                dd($current_url);?>--}}
 @endsection
