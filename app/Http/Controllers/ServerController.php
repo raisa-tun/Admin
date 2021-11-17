@@ -38,7 +38,13 @@ class ServerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+        $request->validate([
+
+            'IP' =>'required|ip',
+            'server_name' => 'required|string|min:3'
+        ]);
+
         $server = Server::create([
           
             'IP' =>$request->ip,
@@ -82,6 +88,11 @@ class ServerController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+
+            'IP' =>'required|ip',
+            'server_name' => 'required|string|min:3'
+        ]);
           $server = Server::where('id',$id)->update([
               'IP' => $request->ip,
               'server_name' => $request->servername
