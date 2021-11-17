@@ -4,69 +4,7 @@
 
 <head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-
-
- .topnav .search-container {
-  float: right;
-   
-}
-
-
-.topnav input[type=text] {
-  padding: 6px;
-  margin-top: 8px;
-  font-size: 17px;
-  border: none;
-}
-
-.topnav input:hover{
-    background:#ccc;
-}
-
-.topnav .add{
-    padding:6px 10px;
-    float:right;
-}
-
-.topnav .select{
-    
-    padding:8px 10px;
-    float:right;
-}
-.topnav .search-container button {
-  float: right;
-  padding: 6px 10px;
-  margin-top: 8px;
-  margin-right: 16px;
-  background: #ddd;
-  font-size: 17px;
-  border: none;
-  cursor: pointer;
-}
-
-.topnav .search-container button:hover {
-  background: #ccc;
-}
-
-@media screen and (max-width: 600px) {
-  .topnav .search-container {
-    float: none;
-  }
-.topnav input[type=text], .topnav .search-container button {
-    float: none;
-    display: block;
-    text-align: left;
-    width: 100%;
-    margin: 0;
-    padding: 14px;
-    
-  }
-.topnav input[type=text] {
-    border: 1px solid #ccc;  
-  }
-}
-</style>
+<link rel="stylesheet" type="text/css" href="{{asset('assets\admin\css\search.css')}}">
 </head>
 
 <!-- Page-header start -->
@@ -246,7 +184,7 @@
         </div>
                                         
                                         <!-- Basic table card end -->
-                                        <!--Pagiation-->
+                                        
                  
                                       {{--  <?php $current_url = url()->full();
                                                 dd($current_url);?>--}}

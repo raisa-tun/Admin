@@ -27,7 +27,7 @@ class SiteController extends Controller
         if(!empty($request->all())){
 
             if($request->filled('search') && $request->filled('status')){
-                //dd($request);
+                dd($request);
                 $specific_data = $query->where('name','Like',"%{$search}")
                                                 ->where('status','Like',"%{$status}")
                                                 ->orWhere('username','Like',"%{$search}%")
@@ -61,13 +61,13 @@ class SiteController extends Controller
              }
                 
             
-            }
+  }
 
        if($specific_data->doesntExist()){
         return view('sites.blank');
       }
       $paginator =$specific_data->paginate(2);
-       $paginator->appends($request->all());
+       $paginator->appends(['search'=>$search, 'status'=>$status]);
         
         $count = $paginator->perPage()*($paginator->currentPage()-1);
         return view('sites.list', ['count'=>$count],['site_list'=>$paginator]);

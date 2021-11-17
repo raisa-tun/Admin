@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\ServerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('form', [CustomAuthController::class,'form']);
     Route::get('list', [CustomAuthController::class,'list']);
     Route::resource('/sites', SiteController::class);
+    Route::resource('/servers', ServerController::class);
     //Route::get('search', );
     
 });

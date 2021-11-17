@@ -98,7 +98,7 @@
                                      <div class="row">
                                          @yield('dashboard')
                                          @yield('card')
-                                         @yield('pagination')
+                                         
                                      </div> 
                                  </div>  
                             </div>

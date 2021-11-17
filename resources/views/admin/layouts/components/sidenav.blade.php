@@ -9,11 +9,11 @@
                                     </a>
                                     <ul class="pcoded-submenu">
                                         <li class="">
-                                            <a href="index-1.htm">
-                                                <span class="pcoded-mtext">Default</span>
+                                            <a href="dashboard">
+                                                <span class="pcoded-mtext">Dashboard</span>
                                             </a>
                                         </li>
-                                        <li class="">
+                                      <!--  <li class="">
                                             <a href="dashboard-crm.htm">
                                                 <span class="pcoded-mtext">CRM</span>
                                             </a>
@@ -23,7 +23,7 @@
                                                 <span class="pcoded-mtext">Analytics</span>
                                                 <span class="pcoded-badge label label-info ">NEW</span>
                                             </a>
-                                        </li>
+                                        </li>-->
                                     </ul>
                                 </li>
                                <!--Basic form-->
@@ -64,6 +64,26 @@
                                                 <li class=" ">
                                                     <a href="/sites">
                                                         <span class="pcoded-mtext">List</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                              <!--Sites end-->
+
+                              <!--Servers-->
+                              <div class="pcoded-navigatio-lavel">Servers</div>
+                                    <ul class="pcoded-item pcoded-left-item">
+                                        <li class="pcoded-hasmenu">
+                                            <a href="javascript:void(0)">
+                                                <span class="pcoded-micon"><i class="feather icon-clipboard"></i></span>
+                                                <span class="pcoded-mtext">Servers</span>
+                                            </a>
+                                            <ul class="pcoded-submenu">
+                                                <!--List-->
+                                                <li class=" ">
+                                                    <a href="/servers">
+                                                        <span class="pcoded-mtext">Servers</span>
                                                     </a>
                                                 </li>
                                             </ul>
