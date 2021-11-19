@@ -9,5 +9,5 @@ class Server extends Model
 {
     use HasFactory;
     
-    protected $fillable = ['IP','server_name'];
+    protected $fillable = ['ip','server_name'];
 }

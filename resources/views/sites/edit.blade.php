@@ -107,7 +107,11 @@
                                                         <div class="form-group row">
                                                             <label class="col-sm-2 col-form-label">Status</label>
                                                             <div class="col-sm-10">
-                                                                <input type="text" class="form-control" placeholder="Status" value="{{$find_site_id->status}}" name="status" >
+                                                                <select class="form-control" placeholder="Status" name="status" >
+                                                                    <option>Status</option>
+                                                                    <option>1</option>
+                                                                    <option>0</option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                  

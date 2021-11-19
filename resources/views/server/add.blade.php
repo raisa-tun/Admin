@@ -61,7 +61,7 @@
                                     </label>
                                          
                                     <div class="col-sm-10">
-                                            <input type="text" class="form-control" placeholder="IP" name="ip" required>
+                                            <input type="text" class="form-control" placeholder="IP" name="ip" required="required">
                                     </div>
                             </div>
                             <div class="form-group row">
@@ -69,7 +69,7 @@
                                              <span class="required">*</span>
                                     </label>
                                     <div class="col-sm-10">
-                                            <input type="text" class="form-control" placeholder="Servername" name = "servername" required>
+                                            <input type="text" class="form-control" placeholder="Servername" name = "servername" required="required">
                                     </div>
                             </div>
       

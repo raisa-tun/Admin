@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use Illuminate\Http\Foundation\FormRequest;
 use App\Models\Server;
 
 class ServerController extends Controller
@@ -39,15 +41,16 @@ class ServerController extends Controller
      */
     public function store(Request $request)
     {   
-        $request->validate([
+        //dd($request);
+        $validate = $request->validate([
 
-            'IP' =>'required|ip',
-            'server_name' => 'required|string|min:3'
+            'ip' =>'required|ip',
+            'servername' => 'required|string|min:3'
         ]);
-
+      // dd($request);
         $server = Server::create([
           
-            'IP' =>$request->ip,
+            'ip' =>$request->ip,
             'server_name' => $request->servername
 
         ]);
@@ -90,11 +93,11 @@ class ServerController extends Controller
     {
         $request->validate([
 
-            'IP' =>'required|ip',
+            'ip' =>'required|ip',
             'server_name' => 'required|string|min:3'
         ]);
           $server = Server::where('id',$id)->update([
-              'IP' => $request->ip,
+              'ip' => $request->ip,
               'server_name' => $request->servername
           ]);
 

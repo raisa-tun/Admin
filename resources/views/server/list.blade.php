@@ -3,6 +3,9 @@
 <head>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    <link rel="stylesheet" type="text/css" href="{{asset('assets\admin\css\search.css')}}">
+   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+ <!-- <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>-->
+   
 </head>
 <!-- Page-header start -->
                              <div class="page-header">
@@ -57,7 +60,20 @@
 
                                             <div class="card-block table-border-style">
                                                 <div class="table-responsive">
-                                                    <table class="table">
+                                                    <table class="table" id="table_id" >
+                                                        
+                                                            <form action="/servers" method="GET">
+                                                            <div class="dataTables_length" id="table_id_length">
+                                                                <select name ="table_id_length" area-controls="table_id" data-column="0" id="filter-select">
+                                                                    <option value="">Select..</option>
+                                                                    @foreach($server_list as $list)
+                                                                    <option value="{{$list->IP}}">{{$list->IP}}</option>
+                                                                    @endforeach  
+                                                                </select>
+                                                                <button type="submit"><i class="fa fa-search"></i></button> 
+                                                                </div>
+                                                            </form>
+                                                        
                                                         <thead>
                                                           
                                                             <tr>
@@ -65,6 +81,7 @@
                                                                 <th>Serial</th>
                                                                 <th>IP</th>
                                                                 <th>Server Name</th>
+                                                                <th>Action</th>
                                                                 
                                                                 
                                                             </tr>
@@ -103,6 +120,11 @@
                                                                     </tr>
                                                                 @endforeach
                                                         </tbody>
+                                                        <tfoot>
+                                                            <th></th>
+                                                            <th></th>
+                                                            <th></th>
+                                                        </tfoot>
                                                     </table>
                                                     
                                                 </div>
@@ -118,4 +140,46 @@
                                         <!-- Basic table card end -->
 
 
+@endsection
+
+@section('script')
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+
+<!--<script type="text/javascript" src="DataTables/datatables.min.js"></script>-->
+<script>
+    $(document).ready( function () {
+    $('#table_id').DataTable({
+       // dom: 'Plfrtip'
+       initComplete: function () {
+            this.api().columns().every( function () {
+                var column = this;
+                var select = $('<select><option value=""></option></select>')
+                    .appendTo( $(column.footer()).empty() )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+ 
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+ 
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+        }
+       
+    
+    });
+
+    $('#filer-select').change(function(){
+        table.column($(this).data('column') )
+        .search($(this).val() )
+        .draw();
+    });
+} );
+
+</script>
 @endsection
