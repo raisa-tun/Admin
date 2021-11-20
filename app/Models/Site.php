@@ -9,5 +9,9 @@ class Site extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','username','password','db_link','db_name','db_user_name','db_password','note','status'];
+    protected $fillable = ['server_id','name','username','password','db_link','db_name','db_user_name','db_password','note','status'];
+
+    public function server(){
+        return $this->belongsTo(Server::class,'id');
+    }
 }

@@ -52,6 +52,19 @@
                                                 
                                                 <form action ="/sites" method= "Post">
                                                 @csrf
+                                                       
+                                                        <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label">Server Ip</label>
+                                                                <div class="col-sm-10">
+                                                                    <select id="filter-select" name="server_id">
+                                                                        <option value="">Select..</option>
+                                                                        @foreach($server as $ip)
+                                                                        <option value="{{$ip->id}}">{{$ip->IP}}</option>
+                                                                        @endforeach  
+                                                                    </select>
+                                                                </div>
+                                                        </div>
+                                                        
                                                         <div class="form-group row">
                                                             <label class="col-sm-2 col-form-label">Name</label>
                                                             <div class="col-sm-10">
@@ -100,7 +113,8 @@
                                                             <div class="col-sm-10">
                                                                 <textarea rows="5" cols="5" class="form-control" placeholder="Note" name= "note"></textarea>
                                                             </div>
-                                                        
+                                    
+
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-sm-2 col-form-label">Status</label>

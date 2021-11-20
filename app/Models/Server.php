@@ -10,4 +10,8 @@ class Server extends Model
     use HasFactory;
     
     protected $fillable = ['ip','server_name'];
+
+    public function site(){
+        return $this->hasMany(Site::class,'id');
+    }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Site;
+use App\Models\Server;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -80,8 +81,10 @@ class SiteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   //dd('name');
-        return view("sites.add");
+    {   
+        $server = Server::with('site')->get();
+        //dd($server);
+        return view('sites.add',compact('server'));
     }
 
     /**
@@ -101,9 +104,10 @@ class SiteController extends Controller
             'note'    => 'required',
             'status'  => 'required',
         ]);
-//dd($request->validate);
+//dd($request);
         $site = Site::create([
             'name' => $request->name,
+            'server_id' => $request->server_id,
             'username' =>$request->username,
             'password' =>$request->password,
             'db_link' => $request->db_link,

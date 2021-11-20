@@ -44,7 +44,7 @@ class ServerController extends Controller
         //dd($request);
         $validate = $request->validate([
 
-            'ip' =>'required|ip',
+            'ip' =>'required|ip|unique',
             'servername' => 'required|string|min:3'
         ]);
       // dd($request);
