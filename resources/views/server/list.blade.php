@@ -3,7 +3,15 @@
 <head>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    <link rel="stylesheet" type="text/css" href="{{asset('assets\admin\css\search.css')}}">
+   
    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+
+<style>
+    .color{
+        background-color: #FFA07A;
+    }
+</style>
+   
  <!-- <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>-->
    
 </head>
@@ -49,7 +57,7 @@
                     <div class = "topnav">
                                           <!--Add button-->
                             <div class="add">
-                                 <button type="button" class="btn btn-primary">
+                                 <button type="button" class="btn btn-secondary">
                                       <a href = "servers/create">Add</a>
                                  </button>
                              </div>
@@ -61,19 +69,7 @@
                                             <div class="card-block table-border-style">
                                                 <div class="table-responsive">
                                                     <table class="table" id="table_id" >
-                                                        
-                                                            <form action="/servers" method="GET">
-                                                            <div class="dataTables_length" id="table_id_length">
-                                                                <select name ="table_id_length" area-controls="table_id" data-column="0" id="filter-select">
-                                                                    <option value="">Select..</option>
-                                                                    @foreach($server_list as $list)
-                                                                    <option value="{{$list->IP}}">{{$list->IP}}</option>
-                                                                    @endforeach  
-                                                                </select>
-                                                                <button type="submit"><i class="fa fa-search"></i></button> 
-                                                                </div>
-                                                            </form>
-                                                        
+  
                                                         <thead>
                                                           
                                                             <tr>
@@ -144,12 +140,30 @@
 
 @section('script')
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
 
 <!--<script type="text/javascript" src="DataTables/datatables.min.js"></script>-->
 <script>
+    
     $(document).ready( function () {
+      //  $.fn.dataTable.Editor.classes.form.button = "btn";
     $('#table_id').DataTable({
-       // dom: 'Plfrtip'
+       dom: 'Bfrtip',
+       buttons: [{
+            extend: 'collection',
+            className: "btn-scondary",
+            text: 'Export',
+            buttons:
+            [
+            {extend: "pdf", className: "btn-primary"},
+            {extend: "pdf", className: "btn-primary"},
+            {extend: "pdf", className: "btn-primary"}],
+    }],
        initComplete: function () {
             this.api().columns().every( function () {
                 var column = this;
@@ -170,15 +184,11 @@
                 } );
             } );
         }
-       
+        
     
     });
 
-    $('#filer-select').change(function(){
-        table.column($(this).data('column') )
-        .search($(this).val() )
-        .draw();
-    });
+   
 } );
 
 </script>
