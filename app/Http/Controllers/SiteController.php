@@ -19,6 +19,7 @@ class SiteController extends Controller
     {
        //dd($request);
        $query = Site::query();
+      // dd($query);
        $specific_data = $query->orderBy('id', 'asc');
        
         $search= $request->search;
@@ -59,15 +60,16 @@ class SiteController extends Controller
                     }
 
                     
-             }
+                }
+                if($specific_data->doesntExist()){
+                    return redirect('/sites')->with('message',"No results found");
+                  }
                 
-            
-  }
+        }
+  
 
-       if($specific_data->doesntExist()){
-        return view('sites.blank');
-      }
-      $paginator =$specific_data->paginate(2);
+       
+       $paginator =$specific_data->paginate(2);
        $paginator->appends(['search'=>$search, 'status'=>$status]);
         
         $count = $paginator->perPage()*($paginator->currentPage()-1);
