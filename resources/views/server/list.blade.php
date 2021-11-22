@@ -46,7 +46,16 @@
     <div class="card-header">
         <h5>Site Table</h5>
 
-
+        @if (Session::has('message'))
+        <div class="alert">
+            <div class="location-selector">
+                <div class="bit top" data-position="top center">{{ Session::get('message') }}</div>
+            </div>
+            @php
+                Session::forget('message');
+            @endphp
+        </div>
+        @endif
 
         <div class="topnav">
             <!--Add button-->

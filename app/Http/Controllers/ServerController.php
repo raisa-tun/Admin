@@ -44,7 +44,7 @@ class ServerController extends Controller
         //dd($request);
         $validate = $request->validate([
 
-            'ip' =>'required|ip|unique',
+            'ip' =>'required|ip|unique:servers',
             'servername' => 'required|string|min:3'
         ]);
       // dd($request);
@@ -55,7 +55,7 @@ class ServerController extends Controller
 
         ]);
         
-        return redirect('/servers');
+        return redirect('/servers')->with('message',"You are successfully added!!!");
     }
 
     /**

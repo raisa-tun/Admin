@@ -155,11 +155,15 @@
 
 
             {{$site_list->links()}}
-            @if (session('message'))
-            <div class="alert alert-success">
-                {{ session('message') }}
+
+            @if (Session::has('message'))
+            <div class="alert">
+                {{ Session::get('message') }}
             </div>
             @endif
+            @php
+            Session::forget('message');
+            @endphp
         </div>
 
 

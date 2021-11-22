@@ -1,11 +1,6 @@
 @extends('admin.layouts.main')
 @section('form')
 
-<head>
-       <link rel="stylesheet" type="text/css" href="{{asset('assets\admin\css\required.css')}}">
-</head>
-
-
 
 <!-- Page-header start -->
 <div class="page-header">

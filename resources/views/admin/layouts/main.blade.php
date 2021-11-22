@@ -25,6 +25,9 @@
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets\admin\css\style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets\admin\css\jquery.mCustomScrollbar.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets\admin\css\required.css')}}">
+    <!-- Notification.css -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets\pages\notification\notification.css')}}">
     @yield('css')
 
 
@@ -127,6 +130,10 @@
         <script type="text/javascript" src="{{asset('assets\admin\js\script.js')}}"></script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+        <!-- notification js -->
+        <script type="text/javascript" src="libraries\assets\js\bootstrap-growl.min.js"></script>
+        <script type="text/javascript" src="libraries\assets\pages\notification\notification.js"></script>
+
         <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 10]>

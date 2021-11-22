@@ -9,6 +9,7 @@
         <div class="col-lg-8">
             <div class="page-header-title">
                 <div class="d-inline">
+
                     <h4>Site Inputs</h4>
                     <!--  <span>Lorem ipsum dolor sit <code>amet</code>, consectetur adipisicing elit</span>-->
                 </div>
@@ -36,7 +37,17 @@
 <div class="card">
     <div class="card-header">
         <h5>Site Inputs</h5>
-        <!-- <span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>-->
+        @if (Session::has('message'))
+        <div class="alert alert-success">
+            <div class="location-selector">
+                <div class="bit top" data-position="top center">{{ Session::get('message') }}</div>
+            </div>
+            @php
+            Session::forget('message');
+            @endphp
+        </div>
+        @endif
+
 
 
         <div class="card-header-right">
@@ -55,7 +66,7 @@
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Server Ip</label>
                 <div class="col-sm-10">
-                    <select id="filter-select" name="server_id">
+                    <select class="form-control" name="server_id">
                         <option value="">Select..</option>
                         @foreach($server as $ip)
                         <option value="{{$ip->id}}">{{$ip->IP}}</option>
@@ -65,21 +76,36 @@
             </div>
 
             <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Name</label>
+                <label class="col-sm-2 col-form-label">Name
+                    <span class="required">*</span>
+                </label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" placeholder="Username" name="name">
+                    <input type="text" class="form-control" placeholder="Name" name="name" required>
+                    @if ($errors->has('name'))
+                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                    @endif
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Username</label>
+                <label class="col-sm-2 col-form-label">Username
+                    <span class="required">*</span>
+                </label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" placeholder="Username" name="username">
+                    <input type="text" class="form-control" placeholder="Username" name="username" required>
+                    @if ($errors->has('name'))
+                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                    @endif
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Password</label>
+                <label class="col-sm-2 col-form-label">Password
+                    <span class="required">*</span>
+                </label>
                 <div class="col-sm-10">
-                    <input type="password" class="form-control" placeholder="Password input" name="password">
+                    <input type="password" class="form-control" placeholder="Password input" name="password" required>
+                    @if ($errors->has('password'))
+                    <span class="text-danger">{{ $errors->first('password') }}</span>
+                    @endif
                 </div>
             </div>
 
@@ -108,26 +134,36 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Note</label>
+                <label class="col-sm-2 col-form-label">Note
+                    <span class="required">*</span>
+                </label>
                 <div class="col-sm-10">
-                    <textarea rows="5" cols="5" class="form-control" placeholder="Note" name="note"></textarea>
+                    <textarea rows="5" cols="5" class="form-control" placeholder="Note" name="note" required></textarea>
+                    @if ($errors->has('note'))
+                    <span class="text-danger">{{ $errors->first('note') }}</span>
+                    @endif
                 </div>
 
 
             </div>
             <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Status</label>
+                <label class="col-sm-2 col-form-label">Status
+                    <span class="required">*</span>
+                </label>
                 <div class="col-sm-10">
-                    <select class="form-control" placeholder="Status" name="status">
+                    <select class="form-control" placeholder="Status" name="status" required>
                         <option>Status</option>
                         <option>1</option>
                         <option>0</option>
                     </select>
+                    @if ($errors->has('status'))
+                    <span class="text-danger">{{ $errors->first('status') }}</span>
+                    @endif
                 </div>
             </div>
 
 
-            <div class="text-center">
+            <div class="text-right">
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </form>
