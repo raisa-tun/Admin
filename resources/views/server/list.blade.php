@@ -1,21 +1,15 @@
 @extends('admin.layouts.main')
-@section('page-header')
-<head>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+@section('css')
+   
    <link rel="stylesheet" type="text/css" href="{{asset('assets\admin\css\search.css')}}">
    
    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
 
-<style>
-    .color{
-        background-color: #FFA07A;
-    }
-</style>
-   
- <!-- <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>-->
-   
-</head>
+ <!-- <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>-->  
+@endsection
 <!-- Page-header start -->
+@section('breadcrumb')
                              <div class="page-header">
                                     <div class="row align-items-end">
                                         <div class="col-lg-8">
@@ -52,19 +46,19 @@
               <div class="card-header">
                      <h5>Site Table</h5>
                         
-                     <!--Search from list-->
+                     
 
                     <div class = "topnav">
                                           <!--Add button-->
                             <div class="add">
                                  <button type="button" class="btn btn-secondary">
-                                      <a href = "servers/create">Add</a>
+                                      <a href = "{{route('servers.create')}}">Add</a>
                                  </button>
                              </div>
                 
                      </div>
 
-                                        <!--end search list-->
+                                       
 
                                             <div class="card-block table-border-style">
                                                 <div class="table-responsive">
@@ -97,12 +91,12 @@
                                                                         <td>
                                                                                 <div class="btn-group" role="group">
                                                                                     <div class="col-md-6 custom">
-                                                                                            <a href="servers/{{$list->id}}/edit" class="btn btn-xs" >
+                                                                                            <a href="{{route('servers.edit',$list->id)}}" class="btn btn-xs" >
                                                                                                 <span class="fas fa-edit"> </span>
                                                                                             </a>
                                                                                     </div>
                                                                                     <div class="col-md-6 custom">
-                                                                                            <form action="/servers/{{$list->id}}" method="POST">
+                                                                                            <form action="{{route('servers.destroy',$list->id)}}" method="POST">
                                                                                                     @csrf
                                                                                                     @method('delete')
                                                                                                     <button type="submit" class="btn btn-xs">

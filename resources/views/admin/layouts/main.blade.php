@@ -3,12 +3,6 @@
 
 <head>
     <title>Adminty - Premium Admin Template by Colorlib </title>
-    <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 10]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-      <![endif]-->
     <!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -21,6 +15,7 @@
     
     <!-- Favicon icon -->
     <link rel="icon" href="{{asset('assets\admin\images\favicon.ico')}}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
     <!-- Required Fremwork -->
@@ -30,7 +25,7 @@
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets\admin\css\style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets\admin\css\jquery.mCustomScrollbar.css')}}">
-
+    @yield('css')
    
     
 
@@ -93,7 +88,7 @@
                             <div class="page-wrapper">
                                 
                                 @yield('form')
-                                @yield('page-header')
+                                @yield('breadcrumb')
                                  <div class="page-body">
                                      <div class="row">
                                          @yield('dashboard')
@@ -132,6 +127,13 @@
     <script type="text/javascript" src="{{asset('assets\admin\js\script.js')}}"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+    <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 10]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+
 
 <script>
   window.dataLayer = window.dataLayer || [];

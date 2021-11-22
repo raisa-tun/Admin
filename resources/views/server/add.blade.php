@@ -53,7 +53,7 @@
                <h4 class="sub-title">Server Inputs</h4>
                                                  
                                                 
-                      <form action ="/servers" method= "Post">
+                      <form action ="{{route('servers.store')}}" method= "Post">
                        @csrf
                             <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">IP

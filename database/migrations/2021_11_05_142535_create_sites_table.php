@@ -15,6 +15,7 @@ class CreateSitesTable extends Migration
     {
         Schema::create('sites', function (Blueprint $table) {
             $table->id();
+            $table->Integer('server_id');
             $table->string('name');
             $table->string('username');
             $table->string('password');

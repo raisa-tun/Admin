@@ -1,12 +1,10 @@
 @extends('admin.layouts.main')
 
-@section('page-header')
-
-<head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+@section('css')
 <link rel="stylesheet" type="text/css" href="{{asset('assets\admin\css\search.css')}}">
-</head>
+@endsection
 
+@section('breadcrumb')
 <!-- Page-header start -->
                         <div class="page-header">
                                     <div class="row align-items-end">
@@ -64,34 +62,13 @@
                                                                       $get_data = request()->has('status') ? request()->get('status') :'';
                                                                      // dd($get_data);
                                                                      //dd(request()->get('status'));
-                                                                     ?>
+                                                        ?>
                                                                 <select class="form-control" name="status"   >
-                                                                     
-                                                                        
-                                                                        
-                                                             <?php 
-                                                               /* foreach($site_list as $status){
-                                                                     //  dd($status);
-                                                                       if($status->status=='0' || $status->status=='1' ){
-                                                                           $data = $status->status;
-                                                                           
-                                                                       }
-                                                                      
-                                                                    
-                                                                   }  */
-                                                                    
-                                                                        
-                                                                       ?>
-
+                                              
                                                                
                                                                        <option value = '' >Status</option>
                                                                        <option value = '0' {{ $get_data == 0 ? "selected" :''}}>Deactive</option>
                                                                        <option value = '1' {{ $get_data == 1 ? "selected" :''}}>Active</option>                                                                    
-
-
-                                                                      {{-- <option value = '' >Status</option>
-                                                                       <option value = '0' {{$data == '0' ? "selected" :''}}>Deactive</option>
-                                                                       <option value = '1' {{$data == '1' ? "selected" :''}}>Active</option>--}}
                                                                        
 
                                                                     
@@ -150,22 +127,22 @@
                                                                
                                                             
                                                                 <td>{{$list->status}}</td>
-                                                                <td>
+                                                                <td colspan="2">
                                                                 <div class="btn-group" role="group">
-                                                                     <div class="col-md-6 custom">
-                                                                                <a href="sites/{{$list->id}}/edit" class="btn btn-xs" >
+                                                                     
+                                                                                <a href="{{route('sites.edit',$list->id)}}" class="btn btn-xs" >
                                                                                 <span class="fas fa-edit"> </span> </a>
-                                                                     </div>
-                                                                     <div class="col-md-6 custom">
-                                                                        <form action="/sites/{{$list->id}}" method="POST">
+                                                                     
+                                                                     
+                                                                        <form action="{{route('sites.destroy',$list->id)}}" method="POST">
                                                                             @csrf
                                                                             @method('delete')
-                                                                            <button type="submit" class="btn btn-xs">
+                                                                            <input type="" class="btn btn-xs">
                                                                                     <span class="fas fa-trash"></span>
                                                                           
-                                                                            </button>
+                                                                           
                                                                         </form>
-                                                                        </div> 
+                                                                        
                                                                         </div> 
                                                                     </td>
                                                             </tr>

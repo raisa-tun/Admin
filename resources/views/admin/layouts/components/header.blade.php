@@ -112,9 +112,14 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="auth-normal-sign-in.htm">
-                                                <i class="feather icon-log-out"></i> Logout
-                                            </a>
+                                            <form action="{{route('signout')}}" method="POST">
+                                               @csrf 
+                                                 <button type = "submit">
+                                                     <i class="feather icon-log-out"></i> 
+                                                         Logout
+                                                 </button>
+                                                
+                                            </form>
                                         </li>
                                     </ul>
 
