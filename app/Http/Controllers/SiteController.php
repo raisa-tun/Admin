@@ -100,7 +100,7 @@ class SiteController extends Controller
        // dd($request->all());
         $request->validate([
         
-            'name' => 'required|alpha|max:255',
+            'name' => 'required|max:255',
             'username' => 'required|min:3',
             'password' => 'required|min:4',
             'note'    => 'required',
@@ -120,8 +120,9 @@ class SiteController extends Controller
             'status' => $request->status,
 
         ]);
-        //dd($site);
-        return redirect('/sites');
+       // dd($site->id);
+       
+        return redirect()->route('sites.edit',$site->id)->with('message',"You are successfully added!!!");
     }
 
     /**

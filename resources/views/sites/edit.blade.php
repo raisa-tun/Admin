@@ -37,6 +37,16 @@
     <div class="card-header">
         <h5>Site Inputs</h5>
         <!-- <span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>-->
+        @if (Session::has('message'))
+        <div class="alert">
+            <div class="location-selector">
+                <div class="bit top" data-position="top center">{{ Session::get('message') }}</div>
+            </div>
+            @php
+                Session::forget('message');
+            @endphp
+        </div>
+        @endif
 
 
         <div class="card-header-right">

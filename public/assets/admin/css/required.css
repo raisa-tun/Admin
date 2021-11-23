@@ -13,3 +13,11 @@
 .location-selector .bit.top{
     height:35px;
 }
+
+ #table .btn-primary{
+    background-color: gray;
+    color: white;
+}
+.color{
+    background-color: gray;
+}

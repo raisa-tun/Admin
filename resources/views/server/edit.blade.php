@@ -13,6 +13,16 @@
                   <div class="page-header-title">
                         <div class="d-inline">
                               <h4>Server Inputs</h4>
+                              @if (Session::has('message'))
+                              <div class="alert">
+                                    <div class="location-selector">
+                                          <div class="bit top" data-position="top center">{{ Session::get('message') }}</div>
+                                    </div>
+                                    @php
+                                    Session::forget('message');
+                                    @endphp
+                              </div>
+                              @endif
                               <!--  <span>Lorem ipsum dolor sit <code>amet</code>, consectetur adipisicing elit</span>-->
                         </div>
                   </div>

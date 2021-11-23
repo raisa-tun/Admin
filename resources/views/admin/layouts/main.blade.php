@@ -11,8 +11,8 @@
     <meta name="keywords" content="flat ui, admin Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
     <meta name="author" content="#">
     <!--for icons-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-
+   <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+-->
     <!-- Favicon icon -->
     <link rel="icon" href="{{asset('assets\admin\images\favicon.ico')}}" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -27,7 +27,9 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets\admin\css\jquery.mCustomScrollbar.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets\admin\css\required.css')}}">
     <!-- Notification.css -->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets\pages\notification\notification.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets\admin\pages\notification\notification.css')}}">
+    <!-- ico font -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets\admin\icon\icofont\css\icofont.css')}}">
     @yield('css')
 
 
@@ -131,8 +133,11 @@
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
         <!-- notification js -->
-        <script type="text/javascript" src="libraries\assets\js\bootstrap-growl.min.js"></script>
-        <script type="text/javascript" src="libraries\assets\pages\notification\notification.js"></script>
+        <script type="text/javascript" src="{{asset('assets\js\bootstrap-growl.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('assets\admin\pages\notification\notification.js')}}"></script>
+        <!-- Editable-table js -->
+        <script type="text/javascript" src="{{asset('assets\admin\pages\edit-table\jquery.tabledit.js')}}"></script>
+        <script type="text/javascript" src="{{asset('assets\admin\pages\edit-table\editable.js')}}"></script>
 
         <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

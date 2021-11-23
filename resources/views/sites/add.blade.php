@@ -92,8 +92,8 @@
                 </label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" placeholder="Username" name="username" required>
-                    @if ($errors->has('name'))
-                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                    @if ($errors->has('username'))
+                    <span class="text-danger">{{ $errors->first('username') }}</span>
                     @endif
                 </div>
             </div>
@@ -102,7 +102,7 @@
                     <span class="required">*</span>
                 </label>
                 <div class="col-sm-10">
-                    <input type="password" class="form-control" placeholder="Password input" name="password" required>
+                    <input type="text" class="form-control" placeholder="Password input" name="password" required>
                     @if ($errors->has('password'))
                     <span class="text-danger">{{ $errors->first('password') }}</span>
                     @endif
@@ -130,7 +130,7 @@
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Database Password</label>
                 <div class="col-sm-10">
-                    <input type="password" class="form-control" placeholder="Database Password" name="db_password">
+                    <input type="text" class="form-control" placeholder="Database Password" name="db_password">
                 </div>
             </div>
             <div class="form-group row">

@@ -127,22 +127,27 @@
 
 
                             <td>{{$list->status}}</td>
-                            <td rowsan="2">
-                                <div class="btn-group" role="group">
+                            <td style="white-space:nowrap; width:1%;">
+                                <div class="tabledit-toolbar btn-toolbar" style="text-align:left;">
+                                    <div class="btn-group btn-group-sm" style="float:none;">
 
-                                    <a href="{{route('sites.edit',$list->id)}}" class="btn">
-                                        <span class="fas fa-edit"> </span> </a>
+                                        <form action="{{route('sites.destroy',$list->id)}}" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="button" class="tabledit-edit-button btn btn-light waves-effect waves-light" style="float:none;margin:5px;">
+                                                <a href="{{route('sites.edit',$list->id)}}">
+                                                    <span class="icofont icofont-ui-edit">
+                                                    </span>
+                                                </a>
+                                            </button>
+                                            <button type="submit" class="tabledit-delete-button btn btn-light waves-effect waves-light" style="float:none;margin:5px;">
+                                                <span class="icofont icofont-ui-delete">
 
+                                                </span>
+                                            </button>
 
-                                    <form action="{{route('sites.destroy',$list->id)}}" method="POST">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit">
-                                            <span class="fas fa-trash"></span>
-                                        </button>
-
-                                    </form>
-
+                                        </form>
+                                    </div>
                                 </div>
                             </td>
                         </tr>
@@ -156,14 +161,14 @@
 
             {{$site_list->links()}}
 
-            @if (Session::has('message'))
+         {{--   @if (Session::has('message'))
             <div class="alert">
                 {{ Session::get('message') }}
             </div>
             @endif
             @php
             Session::forget('message');
-            @endphp
+            @endphp--}}
         </div>
 
 

@@ -54,8 +54,8 @@ class ServerController extends Controller
             'server_name' => $request->servername
 
         ]);
-        
-        return redirect('/servers')->with('message',"You are successfully added!!!");
+        return redirect()->route('servers.edit',$server->id)->with('message',"You are successfully added!!!");
+       // return redirect('/servers')->with('message',"You are successfully added!!!");
     }
 
     /**
