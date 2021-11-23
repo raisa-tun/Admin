@@ -134,7 +134,7 @@
         <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
         <!-- notification js -->
         <script type="text/javascript" src="{{asset('assets\js\bootstrap-growl.min.js')}}"></script>
-        <script type="text/javascript" src="{{asset('assets\admin\pages\notification\notification.js')}}"></script>
+        <!--<script type="text/javascript" src="{{asset('assets\admin\pages\notification\notification.js')}}"></script>-->
         <!-- Editable-table js -->
         <script type="text/javascript" src="{{asset('assets\admin\pages\edit-table\jquery.tabledit.js')}}"></script>
         <script type="text/javascript" src="{{asset('assets\admin\pages\edit-table\editable.js')}}"></script>

@@ -68,8 +68,8 @@
                             </div>
                      </div>
 
-                     <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                     <div class="text-right">
+                            <button type="submit" class="btn btn-primary waves-effect" data-type="inverse" data-animation-in="animated fadeInRight" data-animation-out="animated fadeOutRight">Submit</button>
                      </div>
               </form>
 
